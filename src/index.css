@@ -22,16 +22,8 @@ code {
   grid-template-rows: 50px 1fr 50px;
 }
 
-header {
-  grid-area: header;
-}
-
 main {
   grid-area: main;
-}
-
-footer {
-  grid-area: footer;
 }
 
 header,
