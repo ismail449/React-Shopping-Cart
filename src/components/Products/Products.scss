@@ -1,0 +1,32 @@
+.products {
+  display: flex;
+  justify-content: space-between;
+  .product-item {
+    width: 20%;
+    .product-details {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      padding: 2px;
+      border: 1px solid #c0c0c0;
+    }
+    button {
+      display: block;
+      width: 100%;
+      background-color: #2a5ea5;
+      border: 0;
+      color: #fff;
+      padding: 7px;
+      border-radius: 5px;
+    }
+    button:hover {
+      cursor: pointer;
+      background-color: #90b2e1;
+    }
+  }
+}
