@@ -38,3 +38,8 @@ main {
 .wrapper .filter {
   width: 30%;
 }
+@media screen and (max-width: 974px) {
+  body {
+    font-size: small;
+  }
+}

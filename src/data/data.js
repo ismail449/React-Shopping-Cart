@@ -5,6 +5,7 @@ const data = [
     imageUrl: '/images/camera.jpg',
     price: 400,
     size: ['M'],
+    description: 'this is a camera'
   },
   {
     id: 2,
@@ -12,6 +13,7 @@ const data = [
     imageUrl: '/images/heels.jpg',
     price: 100,
     size: ['S', 'M', 'L'],
+    description: 'these are high heels'
   },
   {
     id: 3,
@@ -19,6 +21,7 @@ const data = [
     imageUrl: '/images/watch.jpg',
     price: 600,
     size: ['M'],
+    description: 'this is an apple watch'
   },
   {
     id: 4,
@@ -26,6 +29,7 @@ const data = [
     imageUrl: '/images/sunglasses.jpg',
     price: 50,
     size: ['S', 'M', 'L'],
+    description: 'these are sunglasses'
   },
 ];
 
