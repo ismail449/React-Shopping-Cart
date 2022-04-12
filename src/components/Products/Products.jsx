@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import ReactModal from 'react-modal';
 import './Products.scss';
-import data from '../../data/data';
 
-const Products = () => {
-  const [products, setProducts] = useState(data);
+const Products = ({ products }) => {
   const [product, setProduct] = useState('');
   return (
     <div className="products">
