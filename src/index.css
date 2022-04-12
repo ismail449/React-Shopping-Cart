@@ -42,4 +42,14 @@ main {
   body {
     font-size: small;
   }
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+  .wrapper .products {
+    width: 100%;
+  }
+  .wrapper .filter {
+    width: 100%;
+  }
 }

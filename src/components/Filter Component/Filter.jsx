@@ -1,11 +1,13 @@
 import React from 'react';
 import './Filter.scss';
 
-const Filter = ({ filterSize, filterOrder, size, order }) => {
+const Filter = ({ filterSize, filterOrder, size, order, numberOfProducts }) => {
   return (
     <div className="filter">
       <h2 className="filter-title">Filter</h2>
-      <div className="filter-products-number">Number of products: 4</div>
+      <div className="filter-products-number">
+        Number of products: {numberOfProducts}
+      </div>
       <div className="filter-by-size">
         <span>Filter</span>
         <select
