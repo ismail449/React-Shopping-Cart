@@ -1,7 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
+import CheckoutForm from '../CheckoutForm Component/CheckoutForm';
 import './Cart.scss';
 
 const Cart = ({ cartProducts, removeFromCart }) => {
+  const [isVisible, setIsVisible] = useState(false);
+  const closeForm = () => {
+    setIsVisible(false);
+  };
+  const openForm = () => {
+    setIsVisible(true);
+  };
   let totalPrice = 0;
   return (
     <div className="cart">
@@ -35,9 +43,10 @@ const Cart = ({ cartProducts, removeFromCart }) => {
       ) : (
         <div className="cart-footer">
           <div className="total">total price: ${totalPrice}</div>
-          <button>select product</button>
+          <button onClick={openForm}>select product</button>
         </div>
       )}
+      {isVisible ? <CheckoutForm closeForm={closeForm} /> : null}
     </div>
   );
 };
