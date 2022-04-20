@@ -8,15 +8,6 @@ import Filter from './components/Filter Component/Filter';
 import Cart from './components/Cart Component/Cart';
 
 function App() {
-  const [cart, setCart] = useState(
-    JSON.parse(localStorage.getItem('cart')) || [],
-  );
-
-  useEffect(() => {
-    localStorage.setItem('cart', JSON.stringify(cart));
-  }, [cart]);
-
-  
 
   return (
     <Provider store={store}>
