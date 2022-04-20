@@ -1,15 +1,51 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { FETCH_PRODUCTS, ADD_TO_CART } from '../../store/actions/types';
 import ReactModal from 'react-modal';
 import Flip from 'react-reveal/Flip';
 import './Products.scss';
 
-const Products = ({ products, addToCart }) => {
+const Products = () => {
+  const dispatch = useDispatch();
+  const cart = useSelector((state) => state.cart.cart);
+  useEffect(
+    () => async () => {
+      const responce = await fetch('http://localhost:3001/api/products');
+
+      const data = await responce.json();
+      dispatch({
+        type: FETCH_PRODUCTS,
+        payload: data,
+      });
+    },
+    [],
+  );
+
+  const addToCart = (product) => {
+    const cartItems = [...cart];
+    let isFound = false;
+    cartItems.forEach((item) => {
+      if (item._id === product._id) {
+        product.quantity++;
+
+        isFound = true;
+      }
+    });
+    if (!isFound) {
+      product.quantity = 1;
+      cartItems.push(product);
+    }
+    localStorage.setItem('cart', JSON.stringify(cartItems));
+    dispatch({ type: ADD_TO_CART, payload: cartItems });
+  };
   const [product, setProduct] = useState('');
+  const products = useSelector((state) => state.products.filteredProducts);
+
   return (
     <div className="products">
       <Flip left cascade>
-        {products.map((product) => (
-          <div className="product-item" key={product.id}>
+        {products?.map((product) => (
+          <div className="product-item" key={product._id}>
             <img
               src={product.imageUrl}
               alt={product.title}

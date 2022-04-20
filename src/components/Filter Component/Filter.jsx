@@ -1,8 +1,54 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { FILTER_BY_SIZE, FILTER_BY_ORDER } from '../../store/actions/types';
 import Fade from 'react-reveal/Fade';
 import './Filter.scss';
 
-const Filter = ({ filterSize, filterOrder, size, order, numberOfProducts }) => {
+const Filter = () => {
+  const dispatch = useDispatch();
+  const order = useSelector((state) => state.products.order);
+  const size = useSelector((state) => state.products.size);
+  const filteredProducts = useSelector(
+    (state) => state.products.filteredProducts,
+  );
+  const products = useSelector((state) => state.products.products);
+  const numberOfProducts = filteredProducts?.length;
+
+  const filterByOrder = (value) => {
+    const cloneProdcts = [...filteredProducts];
+    let newProducts = cloneProdcts.sort((a, b) => {
+      if (value === 'lowest') {
+        return a.price - b.price;
+      } else if (value === 'highest') {
+        return b.price - a.price;
+      } else if (value === 'latest') {
+        return a.id - b.id;
+      }
+    });
+    dispatch({
+      type: FILTER_BY_ORDER,
+      payload: { order: value, products: newProducts },
+    });
+  };
+
+  const filterBySize = (value) => {
+    const cloneProdcts = [...products];
+    if (value === 'All') {
+      dispatch({
+        type: FILTER_BY_SIZE,
+        payload: { size: value, products: cloneProdcts },
+      });
+      return;
+    }
+    let newProducts = cloneProdcts.filter((product) =>
+      product.size.includes(value),
+    );
+    dispatch({
+      type: FILTER_BY_SIZE,
+      payload: { size: value, products: newProducts },
+    });
+  };
+
   return (
     <Fade top cascade>
       <div className="filter">
@@ -15,7 +61,9 @@ const Filter = ({ filterSize, filterOrder, size, order, numberOfProducts }) => {
           <select
             value={size}
             className="filter-select"
-            onChange={(e) => filterSize(e)}
+            onChange={(e) => {
+              filterBySize(e.target.value);
+            }}
           >
             <option value="All">All</option>
             <option value="XS">XS</option>
@@ -29,7 +77,7 @@ const Filter = ({ filterSize, filterOrder, size, order, numberOfProducts }) => {
           <span>Order</span>
           <select
             value={order}
-            onChange={(e) => filterOrder(e)}
+            onChange={(e) => filterByOrder(e.target.value)}
             className="filter-select"
           >
             <option value="latest">Latest</option>
