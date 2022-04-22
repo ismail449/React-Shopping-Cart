@@ -18,7 +18,7 @@ const Products = () => {
         payload: data,
       });
     },
-    [],
+    [dispatch],
   );
 
   const addToCart = (product) => {
@@ -26,8 +26,7 @@ const Products = () => {
     let isFound = false;
     cartItems.forEach((item) => {
       if (item._id === product._id) {
-        product.quantity++;
-
+        item.quantity++;
         isFound = true;
       }
     });

@@ -1,10 +1,23 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Header.scss';
 
 const Header = () => {
   return (
-    <div>
-      <header>Shopping Cart</header>
+    <div className="header">
+      <header>
+        <Link className="link" to="/">
+          shopping cart
+        </Link>
+      </header>
+      <div className="links">
+        <Link className="link" to="/">
+          home
+        </Link>
+        <Link className="link" to="/orders">
+          Orders
+        </Link>
+      </div>
     </div>
   );
 };

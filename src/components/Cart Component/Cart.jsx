@@ -74,7 +74,9 @@ const Cart = () => {
           <button onClick={openForm}>select product</button>
         </div>
       )}
-      {isVisible ? <CheckoutForm closeForm={closeForm} /> : null}
+      {isVisible ? (
+        <CheckoutForm closeForm={closeForm} totalPrice={totalPrice} />
+      ) : null}
     </div>
   );
 };
