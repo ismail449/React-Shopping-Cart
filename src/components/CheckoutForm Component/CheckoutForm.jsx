@@ -20,13 +20,16 @@ const CheckoutForm = ({ closeForm, totalPrice }) => {
   };
 
   const createOrder = async (newOrder) => {
-    const response = await fetch('http://localhost:3001/api/orders', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
+    const response = await fetch(
+      'https://react-shopping-cart449.herokuapp.com/api/orders',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newOrder),
       },
-      body: JSON.stringify(newOrder),
-    });
+    );
     const data = await response.json();
     console.log(data);
     dispatch({

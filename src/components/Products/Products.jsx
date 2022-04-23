@@ -10,7 +10,9 @@ const Products = () => {
   const cart = useSelector((state) => state.cart.cart);
   useEffect(
     () => async () => {
-      const responce = await fetch('http://localhost:3001/api/products');
+      const responce = await fetch(
+        'https://react-shopping-cart449.herokuapp.com/api/products',
+      );
 
       const data = await responce.json();
       dispatch({
