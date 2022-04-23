@@ -12,8 +12,8 @@ function App() {
       <Provider store={store}>
       <Header />
         <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/orders" element={<OrdersPage />} />
+          <Route path="/React-Shopping-Cart" element={<HomePage />} />
+          <Route path="/React-Shopping-Cart/orders" element={<OrdersPage />} />
         </Routes>
         
       </Provider>
