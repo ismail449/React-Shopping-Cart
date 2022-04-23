@@ -41,22 +41,24 @@ const Products = () => {
   const products = useSelector((state) => state.products.filteredProducts);
 
   return (
-    <div className="products">
+    <>
       <Flip left cascade>
-        {products?.map((product) => (
-          <div className="product-item" key={product._id}>
-            <img
-              src={product.imageUrl}
-              alt={product.title}
-              onClick={() => setProduct(product)}
-            />
-            <div className="product-details">
-              <p>{product.title}</p>
-              <span>${product.price}</span>
+        <div className="products">
+          {products?.map((product) => (
+            <div className="product-item" key={product._id}>
+              <img
+                src={product.imageUrl}
+                alt={product.title}
+                onClick={() => setProduct(product)}
+              />
+              <div className="product-details">
+                <p>{product.title}</p>
+                <span>${product.price}</span>
+              </div>
+              <button onClick={() => addToCart(product)}>Add To Cart</button>
             </div>
-            <button onClick={() => addToCart(product)}>Add To Cart</button>
-          </div>
-        ))}
+          ))}
+        </div>
       </Flip>
       <ReactModal
         isOpen={product !== '' ? true : false}
@@ -73,7 +75,7 @@ const Products = () => {
           <p>Price: ${product.price}</p>
         </div>
       </ReactModal>
-    </div>
+    </>
   );
 };
 
