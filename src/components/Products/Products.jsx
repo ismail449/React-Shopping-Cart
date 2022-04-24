@@ -8,9 +8,9 @@ import './Products.scss';
 const Products = () => {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart.cart);
+  console.log('i am here');
   useEffect(
     () => async () => {
-      console.log('i am here');
       const responce = await fetch(
         'https://react-shopping-cart449.herokuapp.com/api/products',
       );
