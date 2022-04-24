@@ -10,7 +10,7 @@ const Products = () => {
   const cart = useSelector((state) => state.cart.cart);
   console.log('i am here');
   useEffect(
-    () => async () => {
+    () => {
       const responce = await fetch(
         'https://react-shopping-cart449.herokuapp.com/api/products',
       );
@@ -21,7 +21,7 @@ const Products = () => {
         payload: data,
       });
     },
-    [],
+    [dispatch],
   );
 
   const addToCart = (product) => {
