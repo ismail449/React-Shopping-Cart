@@ -31,7 +31,6 @@ const CheckoutForm = ({ closeForm, totalPrice }) => {
       },
     );
     const data = await response.json();
-    console.log(data);
     dispatch({
       type: CREATE_ORDER,
       payload: {

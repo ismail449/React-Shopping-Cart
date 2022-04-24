@@ -6,15 +6,15 @@ const Header = () => {
   return (
     <div className="header">
       <header>
-        <Link className="link" to="/React-Shopping-Cart">
+        <Link className="link" to="/">
           shopping cart
         </Link>
       </header>
       <div className="links">
-        <Link className="link" to="/React-Shopping-Cart">
+        <Link className="link" to="/">
           home
         </Link>
-        <Link className="link" to="/React-Shopping-Cart/orders">
+        <Link className="link" to="/orders">
           Orders
         </Link>
       </div>
