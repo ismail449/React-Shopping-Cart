@@ -21,7 +21,7 @@ const Products = () => {
         payload: data,
       });
     },
-    [dispatch],
+    [],
   );
 
   const addToCart = (product) => {
