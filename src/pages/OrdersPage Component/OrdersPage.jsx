@@ -7,8 +7,8 @@ import './OrdersPage.scss';
 const OrdersPage = () => {
   const dispatch = useDispatch();
   const orders = useSelector((state) => state.order.orders);
-  useEffect(
-    () => async () => {
+  useEffect(() => {
+    async function fetchData() {
       const responce = await fetch(
         'https://react-shopping-cart449.herokuapp.com/api/orders',
       );
@@ -21,9 +21,9 @@ const OrdersPage = () => {
           orders: data,
         },
       });
-    },
-    [dispatch],
-  );
+    }
+    fetchData();
+  }, [dispatch]);
   return (
     <>
       {orders ? (

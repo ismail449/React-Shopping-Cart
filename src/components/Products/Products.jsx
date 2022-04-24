@@ -9,8 +9,8 @@ const Products = () => {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart.cart);
   console.log('i am here');
-  useEffect(
-    () => {
+  useEffect(() => {
+    async function fetchData() {
       const responce = await fetch(
         'https://react-shopping-cart449.herokuapp.com/api/products',
       );
@@ -20,9 +20,9 @@ const Products = () => {
         type: FETCH_PRODUCTS,
         payload: data,
       });
-    },
-    [dispatch],
-  );
+    }
+    fetchData();
+  }, [dispatch]);
 
   const addToCart = (product) => {
     const cartItems = [...cart];
@@ -42,7 +42,7 @@ const Products = () => {
   };
   const [product, setProduct] = useState('');
   const products = useSelector((state) => state.products.filteredProducts);
-
+  console.log('the products', products);
   return (
     <>
       <Flip left cascade>
