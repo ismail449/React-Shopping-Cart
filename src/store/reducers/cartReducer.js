@@ -1,4 +1,4 @@
-import { ADD_TO_CART, REMOVE_FROM_CART, CLEAR_CART, CLEAR_ORDER } from '../actions/types';
+import { ADD_TO_CART, REMOVE_FROM_CART, CLEAR_CART } from '../actions/types';
 
 export const cartReducer = (state = {
     cart: JSON.parse(localStorage.getItem('cart')) || []
