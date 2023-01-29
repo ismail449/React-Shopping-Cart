@@ -1,25 +1,27 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { FETCH_PRODUCTS, ADD_TO_CART } from '../../store/actions/types';
-import ReactModal from 'react-modal';
-import Flip from 'react-reveal/Flip';
-import './Products.scss';
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { FETCH_PRODUCTS, ADD_TO_CART } from "../../store/actions/types";
+import ReactModal from "react-modal";
+import Flip from "react-reveal/Flip";
+import "./Products.scss";
 
 const Products = () => {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart.cart);
-  console.log('i am here');
   useEffect(() => {
     async function fetchData() {
-      const responce = await fetch(
-        'https://react-shopping-cart449.herokuapp.com/api/products',
-      );
-
-      const data = await responce.json();
-      dispatch({
-        type: FETCH_PRODUCTS,
-        payload: data,
-      });
+      try {
+        const response = await fetch(
+          "https://react-shopping-cart-server.onrender.com/api/products"
+        );
+        const data = await response.json();
+        dispatch({
+          type: FETCH_PRODUCTS,
+          payload: data,
+        });
+      } catch (error) {
+        console.log(error);
+      }
     }
     fetchData();
   }, [dispatch]);
@@ -37,12 +39,11 @@ const Products = () => {
       product.quantity = 1;
       cartItems.push(product);
     }
-    localStorage.setItem('cart', JSON.stringify(cartItems));
+    localStorage.setItem("cart", JSON.stringify(cartItems));
     dispatch({ type: ADD_TO_CART, payload: cartItems });
   };
-  const [product, setProduct] = useState('');
+  const [product, setProduct] = useState("");
   const products = useSelector((state) => state.products.filteredProducts);
-  console.log('the products', products);
   return (
     <>
       <Flip left cascade>
@@ -64,11 +65,11 @@ const Products = () => {
         </div>
       </Flip>
       <ReactModal
-        isOpen={product !== '' ? true : false}
-        onRequestClose={() => setProduct('')}
+        isOpen={product !== "" ? true : false}
+        onRequestClose={() => setProduct("")}
         ariaHideApp={true}
       >
-        <span className="modal-closing-button" onClick={() => setProduct('')}>
+        <span className="modal-closing-button" onClick={() => setProduct("")}>
           &times;
         </span>
         <div className="product-info">

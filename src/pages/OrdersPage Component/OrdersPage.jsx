@@ -9,12 +9,11 @@ const OrdersPage = () => {
   const orders = useSelector((state) => state.order.orders);
   useEffect(() => {
     async function fetchData() {
-      const responce = await fetch(
-        'https://react-shopping-cart449.herokuapp.com/api/orders',
+      const response = await fetch(
+        'https://react-shopping-cart-server.onrender.com/api/orders',
       );
 
-      const data = await responce.json();
-      console.log(data);
+      const data = await response.json();
       dispatch({
         type: FETCH_ORDERS,
         payload: {

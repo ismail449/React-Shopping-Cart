@@ -21,7 +21,7 @@ const CheckoutForm = ({ closeForm, totalPrice }) => {
 
   const createOrder = async (newOrder) => {
     const response = await fetch(
-      'https://react-shopping-cart449.herokuapp.com/api/orders',
+      'https://react-shopping-cart-server.onrender.com/api/orders',
       {
         method: 'POST',
         headers: {
